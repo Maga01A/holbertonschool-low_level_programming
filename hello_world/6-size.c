@@ -1,10 +1,4 @@
 #include <stdio.h>
-
-/**
- * main - prints sizes of various types
- *
- * Return: Always 0
- */
 int main(void)
 {
     printf("Size of a char: %zu byte(s)\n", sizeof(char));
@@ -14,3 +8,4 @@ int main(void)
     printf("Size of a float: %zu byte(s)\n", sizeof(float));
     return (0);
 }
+
