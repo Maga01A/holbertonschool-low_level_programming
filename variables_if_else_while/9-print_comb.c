@@ -6,15 +6,15 @@ int main(void)
 
     while (n < 10)
     {
-        putchar(n + '0');        // print digit
+        putchar(n + '0');           // 1st putchar: print digit
         if (n != 9)
         {
-            putchar(',');        // print comma
-            putchar(' ');        // print space
+            putchar(',');           // 2nd putchar: print comma
+            putchar(' ');           // 3rd putchar: print space
         }
         n++;
     }
-    putchar('\n');              // newline
+    putchar('\n');                  // 4th putchar: print newline
     return (0);
 }
 
