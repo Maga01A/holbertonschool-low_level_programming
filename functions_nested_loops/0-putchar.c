@@ -10,7 +10,6 @@ int main(void)
         _putchar(str[i]);
         i++;
     }
-    _putchar('
-');
+    _putchar(10);
     return (0);
 }
