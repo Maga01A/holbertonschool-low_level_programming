@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+/**
+ * main - Prints all possible combinations of two two-digit numbers
+ *
+ * Description: Prints number pairs from 00 01 to 98 99 in ascending order
+ *              with proper formatting. Each number is printed as two digits
+ *              (e.g., 1 becomes 01). Pairs are separated by comma and space.
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
 	int i, j;
