@@ -7,19 +7,18 @@
  */
 int main(void)
 {
-    char c;
+	char c;
 
-    /* print '0' through '9' */
-    for (c = '0'; c <= '9'; c++)
-        putchar(c);
+	/* print '0' through '9' */
+	for (c = '0'; c <= '9'; c++)
+		putchar(c);
 
-    /* print 'a' through 'f' */
-    for (c = 'a'; c <= 'f'; c++)
-        putchar(c);
+	/* print 'a' through 'f' */
+	for (c = 'a'; c <= 'f'; c++)
+		putchar(c);
 
-    /* trailing newline */
-    putchar('\n');
+	/* trailing newline */
+	putchar('\n');
 
-    return (0);
+	return (0);
 }
-
