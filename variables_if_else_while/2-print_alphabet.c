@@ -2,12 +2,13 @@
 
 int main(void)
 {
-    char c;
+	char letter;
 
-    for (c = 'a'; c <= 'z'; c++)
-        putchar(c);
-    putchar('
-');
+	for (letter = 'a'; letter <= 'z'; letter++)
+	{
+		putchar(letter);
+	}
+	putchar('\n');
 
-    return (0);
+	return (0);
 }
