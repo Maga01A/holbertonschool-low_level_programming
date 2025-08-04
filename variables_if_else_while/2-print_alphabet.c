@@ -2,10 +2,7 @@
 
 /**
  * main - Prints the alphabet in lowercase
- * 
- * Description: Prints all lowercase letters from 'a' to 'z' followed by a new line
- * using only two putchar calls.
- *
+ * Description: Prints lowercase letters from 'a' to 'z' using two putchar calls
  * Return: Always 0 (Success)
  */
 int main(void)
