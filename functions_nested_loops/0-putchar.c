@@ -1,20 +1,16 @@
-#include <unistd.h>
-
-int _putchar(char c)
-{
-    return write(1, &c, 1);
-}
+#include "main.h"
 
 int main(void)
 {
-    _putchar('_');
-    _putchar('p');
-    _putchar('u');
-    _putchar('t');
-    _putchar('c');
-    _putchar('h');
-    _putchar('a');
-    _putchar('r');
-    _putchar('\n');
+    char str[] = "_putchar";
+    int i = 0;
+
+    while (str[i])
+    {
+        _putchar(str[i]);
+        i++;
+    }
+    _putchar('
+');
     return (0);
 }
