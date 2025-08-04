@@ -1,20 +1,24 @@
 #include <stdio.h>
 
+/**
+ * main - Prints all single-digit numbers with separators
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-    int n = 0;
+	int n;
 
-    while (n < 10)
-    {
-        putchar(n + '0');           // 1st putchar: print digit
-        if (n != 9)
-        {
-            putchar(',');           // 2nd putchar: print comma
-            putchar(' ');           // 3rd putchar: print space
-        }
-        n++;
-    }
-    putchar('\n');                  // 4th putchar: print newline
-    return (0);
+	for (n = 0; n < 10; n++)
+	{
+		putchar('0' + n);
+		if (n != 9)
+		{
+			putchar(',');
+			putchar(' ');
+		}
+	}
+	putchar('\n');
+
+	return (0);
 }
-
