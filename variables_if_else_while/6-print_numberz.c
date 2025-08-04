@@ -2,12 +2,12 @@
 
 int main(void)
 {
-    int n;
+    int n = 0;
 
-    for (n = 0; n < 10; n++)
-        putchar(n + '0');
-    putchar('
-');
+    while (n < 10)
+        putchar('0' + n++);
 
+    putchar('\n');
     return (0);
 }
+
