@@ -5,3 +5,4 @@ int _putchar(char c);
 void print_triangle(int size);
 
 #endif /* MAIN_H */
+int _isdigit(int c);
