@@ -6,3 +6,4 @@ int _isdigit(int c);
 
 #endif /* MAIN_H */
 int _isdigit(int c);
+int mul(int a, int b);
