@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * print_line - draws a straight line of length n
  * @n: number of times to print '_'
