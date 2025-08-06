@@ -20,7 +20,7 @@ void print_times_table(int n)
 			val = row * col;
 
 			if (col == 0)
-				_putchar('0' + val); /* ilk sayı direkt yazılır */
+				_putchar('0' + val);
 			else
 			{
 				_putchar(',');
