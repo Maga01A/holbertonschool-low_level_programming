@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-char *string_toupper(char *str);
+int _putchar(char c);
+void print_chessboard(char (*a)[8]);
 
-#endif /* MAIN_H */
+#endif
