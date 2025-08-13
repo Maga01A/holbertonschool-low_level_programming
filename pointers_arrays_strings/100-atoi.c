@@ -2,39 +2,28 @@
 /**
  * _atoi - converts a string to an integer
  * @s: string to convert
- *
- * Return: integer value
+ * Return: the integer value
  */
 int _atoi(char *s)
 {
-	int i = 0, sign = 1, result = 0;
+	int sign = 1;
+	int result = 0;
+	int started = 0;
 
-	/* Skip non-number characters and handle signs */
-	while (s[i] != '\0' && (s[i] < '0' || s[i] > '9'))
+	while (*s)
 	{
-		if (s[i] == '-')
-			sign *= -1;
-		else if (s[i] == '+')
-			;
-		i++;
+		if (*s == '-')
+			sign = -sign;
+		else if (*s >= '0' && *s <= '9')
+		{
+			started = 1;
+			result = result * 10 + (*s - '0');
+		}
+		else if (started)
+			break;
+		s++;
 	}
 
-	/* Build number directly with sign applied */
-	while (s[i] >= '0' && s[i] <= '9')
-	{
-		if (sign == 1)
-		{
-			if (result > (2147483647 - (s[i] - '0')) / 10)
-				return (2147483647); /* optional clamp */
-		}
-		else
-		{
-			if (result < (-2147483648 + (s[i] - '0')) / 10)
-				return (-2147483648); /* optional clamp */
-		}
-		result = result * 10 + sign * (s[i] - '0');
-		i++;
-	}
-
-	return (result);
+	return (sign * result);
 }
+
