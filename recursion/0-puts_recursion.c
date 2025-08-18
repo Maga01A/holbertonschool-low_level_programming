@@ -6,12 +6,13 @@
  */
 void _puts_recursion(char *s)
 {
-    if (*s == 0)   //stringin sonuna gelende funksiyani bitirir.
+    if (*s == '\0') /* stringin sonuna gelince fonksiyonu bitir */
     {
         _putchar('\n');
         return;
     }
 
-    _putchar(*s); //stringin ilk karakterini yazdirir.
-    _puts_recursion(s + 1); //stringin novbeti karakterlerini yazdirir.
+    _putchar(*s);
+    _puts_recursion(s + 1);
 }
+
