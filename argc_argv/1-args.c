@@ -1,8 +1,16 @@
 #include <stdio.h>
 
+/**
+ * main - prints the number of arguments passed into it
+ * @argc: argument count
+ * @argv: argument vector (unused)
+ *
+ * Return: 0
+ */
 int main(int argc, char *argv[])
 {
-    (void)argv;                 /* argv istifadə olunmur, warning verməsin deyə */
-    printf("%d\n", argc - 1);   /* argc - 1 = istifadəçi tərəfindən verilən sözlərin sayı */
-    return 0;                    /* proqram uğurla başa çatdı */
+    (void)argv; /* argv kullanılmıyor, uyarı vermemesi için */
+    printf("%d\n", argc - 1);
+    return (0);
 }
+
