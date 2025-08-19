@@ -2,8 +2,8 @@
 
 int main(int argc, char *argv[])
 {
-    (void)argc;            // argc istifade  olunmur, amma compiler warning veresin de istifade etmek olar
-    printf("%s\n", argv[0]); // argv[0] proqramın adını saxlayır, onu çap edirik
-    return 0;               // proqram ugurla basa çatd
+    (void)argc;  /* argc istifadə olunmur, warning verməmək üçün */
+    printf("%s\n", argv[0]);  /* argv[0] proqramın adını saxlayır və çap edirik */
+    return 0;  /* proqram uğurla başa çatdı */
 }
 
