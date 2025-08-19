@@ -1,10 +1,20 @@
 #include <stdio.h>
 
+/**
+ * main - prints all arguments it receives
+ * @argc: argument count
+ * @argv: argument vector
+ *
+ * Return: 0
+ */
 int main(int argc, char *argv[])
 {
-    for (int i = 0; i < argc; i++)   /* i=0-dan başlayır, argv[0]=proqram adı */
-    {
-        printf("%s\n", argv[i]);     /* argv[i] = i-ci söz, hər sətri çap et */
-    }
-    return 0;                         /* proqram uğurla başa çatdı */
+int i;
+
+for (i = 0; i < argc; i++)
+{
+printf("%s\n", argv[i]);
 }
+return (0);
+}
+
