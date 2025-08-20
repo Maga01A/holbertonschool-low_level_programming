@@ -4,7 +4,7 @@
  * _strdup - verilen string’in kopyasını oluşturan fonksiyon
  * @str: kopyalanacak string
  *
- * Return: string kopyasının pointer’ı, 
+ * Return: string kopyasının pointer’ı,
  *         NULL eğer str = NULL veya malloc başarısız olursa
  */
 char *_strdup(char *str)
