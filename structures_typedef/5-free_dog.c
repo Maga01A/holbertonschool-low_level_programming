@@ -2,8 +2,8 @@
 #include "dog.h"     /* struct dog ve prototipler için */
 
 /**
- * free_dog - Dinamik olarak oluşturulmuş bir dog_t'yi ve içindeki kopyaları
- * serbest bırakır
+ * free_dog - Dinamik olarak oluşturulmuş bir dog_t'yi serbest bırakır
+ * ve içindeki kopya stringleri temizler
  * @d: Serbest bırakılacak dog_t işaretçisi
  */
 void free_dog(dog_t *d)
