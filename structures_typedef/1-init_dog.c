@@ -1,4 +1,5 @@
-#include "dog.h"       // struct dog tanımını kullanabilmek için başlık dosyasını dahil ediyoruz
+#include "dog.h"   /* struct dog ve prototip için başlık dosyası dahil edildi */
+#include <stddef.h> /* NULL tanımı için */
 
 /**
  * init_dog - bir struct dog değişkenini başlatır
@@ -9,11 +10,11 @@
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-    if (d == NULL)        // Eğer gelen işaretçi NULL ise, yani geçerli bir struct yoksa
-        return;           // fonksiyondan çıkıyoruz, işlem yapmıyoruz
+    if (d == NULL) /* Eğer gelen işaretçi NULL ise fonksiyondan çık */
+        return;
 
-    d->name = name;       // struct içindeki 'name' alanını verilen isimle başlatıyoruz
-    d->age = age;         // struct içindeki 'age' alanını verilen yaş ile başlatıyoruz
-    d->owner = owner;     // struct içindeki 'owner' alanını verilen sahip adı ile başlatıyoruz
+    d->name = name;   /* Köpeğin adını struct içine ata */
+    d->age = age;     /* Köpeğin yaşını struct içine ata */
+    d->owner = owner; /* Köpeğin sahibini struct içine ata */
 }
 
