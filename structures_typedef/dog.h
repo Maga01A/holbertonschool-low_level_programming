@@ -13,9 +13,9 @@
  */
 struct dog
 {
-	char *name;
-	float age;
-	char *owner;
+char *name;
+float age;
+char *owner;
 };
 
 /* typedef ile struct dog için yeni isim dog_t oluşturuldu */
