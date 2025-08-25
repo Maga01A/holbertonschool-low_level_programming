@@ -1,5 +1,5 @@
-#include <stdlib.h>  /* malloc ve free için */
-#include "dog.h"     /* struct dog ve prototipler için */
+#include <stdlib.h>
+#include "dog.h"
 
 /**
  * str_copy - Bir string'in kopyasını oluşturur
@@ -9,26 +9,23 @@
  */
 char *str_copy(char *str)
 {
-    char *copy;
-    int len = 0, i;
+	char *copy;
+	int len = 0, i;
 
-    if (str == NULL)
-        return (NULL);
+	if (str == NULL)
+		return (NULL);
 
-    /* Uzunluğu hesapla */
-    while (str[len] != '\0')
-        len++;
+	while (str[len] != '\0')
+		len++;
 
-    /* Bellek ayır */
-    copy = malloc(len + 1);
-    if (copy == NULL)
-        return (NULL);
+	copy = malloc(len + 1);
+	if (copy == NULL)
+		return (NULL);
 
-    /* Karakterleri kopyala */
-    for (i = 0; i <= len; i++)
-        copy[i] = str[i];
+	for (i = 0; i <= len; i++)
+		copy[i] = str[i];
 
-    return (copy);
+	return (copy);
 }
 
 /**
@@ -41,34 +38,29 @@ char *str_copy(char *str)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-    dog_t *d;
+	dog_t *d;
 
-    /* dog_t için bellek ayır */
-    d = malloc(sizeof(dog_t));
-    if (d == NULL)
-        return (NULL);
+	d = malloc(sizeof(dog_t));
+	if (d == NULL)
+		return (NULL);
 
-    /* name kopyası oluştur */
-    d->name = str_copy(name);
-    if (name != NULL && d->name == NULL)
-    {
-        free(d);
-        return (NULL);
-    }
+	d->name = str_copy(name);
+	if (name != NULL && d->name == NULL)
+	{
+		free(d);
+		return (NULL);
+	}
 
-    /* owner kopyası oluştur */
-    d->owner = str_copy(owner);
-    if (owner != NULL && d->owner == NULL)
-    {
-        if (d->name != NULL)
-            free(d->name);
-        free(d);
-        return (NULL);
-    }
+	d->owner = str_copy(owner);
+	if (owner != NULL && d->owner == NULL)
+	{
+		if (d->name != NULL)
+			free(d->name);
+		free(d);
+		return (NULL);
+	}
 
-    /* age değerini ata */
-    d->age = age;
-
-    return (d);
+	d->age = age;
+	return (d);
 }
 
