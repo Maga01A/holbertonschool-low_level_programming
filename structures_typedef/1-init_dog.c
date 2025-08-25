@@ -1,5 +1,6 @@
 #include "dog.h"   /* struct dog ve prototip için başlık dosya
-		      sı dahil edildi */
+		     * sı dahil edildi
+		    */
 #include <stddef.h> /* NULL tanımı için */
 
 /**
