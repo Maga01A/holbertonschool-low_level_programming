@@ -1,5 +1,4 @@
-#include <stdlib.h>   /* malloc ve free için */
-#include <string.h>   /* strlen için */
+#include <stdlib.h>  /* malloc ve free için */
 #include "dog.h"      /* struct dog ve prototipler için */
 
 /**
@@ -15,31 +14,48 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t *d;
 	char *name_copy;
 	char *owner_copy;
-	int i;
+	int i, name_len, owner_len;
 
 	d = malloc(sizeof(dog_t));
 	if (d == NULL)
 		return (NULL);
 
+	/* name uzunluğunu hesapla */
+	name_len = 0;
 	if (name != NULL)
 	{
-		name_copy = malloc(strlen(name) + 1);
+		while (name[name_len] != '\0')
+			name_len++;
+	}
+
+	/* owner uzunluğunu hesapla */
+	owner_len = 0;
+	if (owner != NULL)
+	{
+		while (owner[owner_len] != '\0')
+			owner_len++;
+	}
+
+	/* name için bellek ayır ve kopyala */
+	if (name != NULL)
+	{
+		name_copy = malloc(name_len + 1);
 		if (name_copy == NULL)
 		{
 			free(d);
 			return (NULL);
 		}
-		for (i = 0; name[i]; i++)
-			name_copy[i] = name[i];
-		name_copy[i] = '\0';
+		for (i = 0; i <= name_len; i++)
+			name_copy[i] = name[i]; /* '\0' dahil kopyala */
 		d->name = name_copy;
 	}
 	else
 		d->name = NULL;
 
+	/* owner için bellek ayır ve kopyala */
 	if (owner != NULL)
 	{
-		owner_copy = malloc(strlen(owner) + 1);
+		owner_copy = malloc(owner_len + 1);
 		if (owner_copy == NULL)
 		{
 			if (d->name != NULL)
@@ -47,9 +63,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 			free(d);
 			return (NULL);
 		}
-		for (i = 0; owner[i]; i++)
-			owner_copy[i] = owner[i];
-		owner_copy[i] = '\0';
+		for (i = 0; i <= owner_len; i++)
+			owner_copy[i] = owner[i]; /* '\0' dahil kopyala */
 		d->owner = owner_copy;
 	}
 	else
