@@ -14,6 +14,7 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 		return;
 
 	d->name = name;   /* Köpeğin adını struct içine ata */
-    	d->age = age;     /* Köpeğin yaşını struct içine ata */
-    	d->owner = owner; /* Köpeğin sahibini struct içine ata */
+	d->age = age;     /* Köpeğin yaşını struct içine ata */
+	d->owner = owner; /* Köpeğin sahibini struct içine ata */
 }
+
