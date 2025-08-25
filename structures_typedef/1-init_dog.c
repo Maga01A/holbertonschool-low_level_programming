@@ -10,11 +10,10 @@
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-    if (d == NULL) /* Eğer gelen işaretçi NULL ise fonksiyondan çık */
-        return;
+	if (d == NULL) /* Eğer gelen işaretçi NULL ise fonksiyondan çık */
+		return;
 
-    d->name = name;   /* Köpeğin adını struct içine ata */
-    d->age = age;     /* Köpeğin yaşını struct içine ata */
-    d->owner = owner; /* Köpeğin sahibini struct içine ata */
+	d->name = name;   /* Köpeğin adını struct içine ata */
+    	d->age = age;     /* Köpeğin yaşını struct içine ata */
+    	d->owner = owner; /* Köpeğin sahibini struct içine ata */
 }
-
