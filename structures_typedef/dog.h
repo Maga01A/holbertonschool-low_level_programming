@@ -21,5 +21,8 @@ struct dog
 /* init_dog fonksiyon prototipi */
 void init_dog(struct dog *d, char *name, float age, char *owner);
 
+/* print_dog fonksiyon prototipi */
+void print_dog(struct dog *d);
+
 #endif /* DOG_H */
 
