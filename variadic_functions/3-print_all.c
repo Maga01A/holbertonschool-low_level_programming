@@ -23,26 +23,27 @@ void print_all(const char * const format, ...)
 
 	while (format != NULL && format[i] != '\0')
 	{
-		if (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's')
+		if (format[i] == 'c' || format[i] == 'i' ||
+		    format[i] == 'f' || format[i] == 's')
 		{
 			switch (format[i])
 			{
 				case 'c':
-					printf("%s%c", separator, 
-						va_arg(args, int));
+					printf("%s%c", separator,
+					       va_arg(args, int));
 					break;
 				case 'i':
-					printf("%s%d", separator, 
-						va_arg(args, int));
+					printf("%s%d", separator,
+					       va_arg(args, int));
 					break;
 				case 'f':
-					printf("%s%f", separator, 
-						va_arg(args, double));
+					printf("%s%f", separator,
+					       va_arg(args, double));
 					break;
 				case 's':
 					str = va_arg(args, char *);
 					if (str == NULL)
-					    str = "(nil)";
+						str = "(nil)";
 					printf("%s%s", separator, str);
 					break;
 			}
