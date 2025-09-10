@@ -60,32 +60,32 @@ int main(int argc, char *argv[])
 
     while (1)
     {
-        bytes_read = read(fd_from, buffer, BUFFER_SIZE);
+    bytes_read = read(fd_from, buffer, BUFFER_SIZE);
 
-        if (bytes_read == -1)
+    if (bytes_read < 0)
+    {
+        close(fd_from);
+        close(fd_to);
+        error_exit_str(98, "Error: Can't read from file %s\n", argv[1]);
+    }
+
+    if (bytes_read == 0) /* EOF */
+        break;
+
+    total_written = 0;
+    while (total_written < bytes_read)
+    {
+        bytes_written = write(fd_to, buffer + total_written,
+                              bytes_read - total_written);
+        if (bytes_written == -1)
         {
             close(fd_from);
             close(fd_to);
-            error_exit_str(98, "Error: Can't read from file %s\n", argv[1]);
+            error_exit_str(99, "Error: Can't write to %s\n", argv[2]);
         }
-
-        if (bytes_read == 0) /* EOF */
-            break;
-
-        total_written = 0;
-        while (total_written < bytes_read)
-        {
-            bytes_written = write(fd_to, buffer + total_written,
-                                  bytes_read - total_written);
-            if (bytes_written == -1)
-            {
-                close(fd_from);
-                close(fd_to);
-                error_exit_str(99, "Error: Can't write to %s\n", argv[2]);
-            }
-            total_written += bytes_written;
-        }
+        total_written += bytes_written;
     }
+}
 
     if (close(fd_from) == -1)
         error_exit_fd(100, "Error: Can't close fd %d\n", fd_from);
