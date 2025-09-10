@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
             {
                 close(fd_from);
                 close(fd_to);
-                error_exit_str(99, "Error: Can't write to %s\n", argv[2]);
+                error_exit_str(98, "Error: Can't write to %s\n", argv[2]);
             }
             total_written += bytes_written;
         }
@@ -70,5 +70,4 @@ int main(int argc, char *argv[])
 }
 
 
-Jot something down
 
