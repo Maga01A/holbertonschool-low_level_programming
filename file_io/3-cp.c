@@ -1,69 +1,45 @@
 #include <stdio.h>
-#include "holberton.h"
-
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 /**
-  * main - Entry point
-  * @argc: The argument count
-  * @argv: The argument vector
-  *
-  * Return: ...
+  * main - entry point
+  * @ac: argument count
+  * @av: array of argument tokens
+  * Return: 0 on success
   */
-int main(int argc, char **argv)
+int main(int ac, char *av[])
 {
-	if (argc != 3)
+	int fd_from, fd_to, rd_stat, wr_stat;
+	mode_t perm = S_IRUSR | S_IWUSR | S_IWGRP | S_IRGRP | S_IROTH;
+	char buffer[1024];
+
+	if (ac != 3)
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
+	fd_from = open(av[1], O_RDONLY);
+	if (fd_from == -1)
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
+	fd_to = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, perm);
+	if (fd_to == -1)
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
+	rd_stat = 1;
+	while (rd_stat)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
-
-	copy_file(argv[1], argv[2]);
-	exit(0);
-}
-
-/**
-  * copy_file - ...
-  * @src: ...
-  * @dest: ...
-  *
-  * Return: ...
-  */
-void copy_file(const char *src, const char *dest)
-{
-	int ofd, tfd, readed;
-	char buff[1024];
-
-	ofd = open(src, O_RDONLY);
-	if (!src || ofd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", src);
-		exit(98);
-	}
-
-	tfd = open(dest, O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	while ((readed = read(ofd, buff, 1024)) > 0)
-	{
-		if (write(tfd, buff, readed) != readed || tfd == -1)
+		rd_stat = read(fd_from, buffer, 1024);
+		if (rd_stat == -1)
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]), exit(98);
+		if (rd_stat > 0)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest);
-			exit(99);
+			wr_stat = write(fd_to, buffer, rd_stat);
+			if (wr_stat != rd_stat || wr_stat == -1)
+				dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
 		}
 	}
-
-	if (readed == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", src);
-		exit(98);
-	}
-
-	if (close(ofd) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", ofd);
-		exit(100);
-	}
-
-	if (close(tfd) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", tfd);
-		exit(100);
-	}
+	if (close(fd_from) == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from), exit(100);
+	if (close(fd_to) == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to), exit(100);
+	return (0);
 }
