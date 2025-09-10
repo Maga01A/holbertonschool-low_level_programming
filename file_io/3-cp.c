@@ -41,7 +41,7 @@ static void error_exit_fd(int code, const char *message, int fd)
 int main(int argc, char *argv[])
 {
     int fd_from, fd_to;
-    ssize_t bytes_read;
+    ssize_t bytes_read, bytes_written, total_written;
     char buffer[BUFFER_SIZE];
 
     if (argc != 3)
@@ -56,40 +56,33 @@ int main(int argc, char *argv[])
     {
         close(fd_from);
         error_exit_str(99, "Error: Can't write to %s\n", argv[2]);
-    }	
+    }
 
     while (1)
     {
-	    bytes_read = read(fd_from, buffer, BUFFER_SIZE);
-	    if (bytes_read == -1)
-	    {
-		    close(fd_from);
-		    close(fd_to);
-		    error_exit_str(98, "Error: Can't read from file %s\n", argv[1]);
-	    }
-	    if (bytes_read == 0) /* EOF */
-		    break;
+        bytes_read = read(fd_from, buffer, BUFFER_SIZE);
+        if (bytes_read == -1)
+        {
+            close(fd_from);
+            close(fd_to);
+            error_exit_str(98, "Error: Can't read from file %s\n", argv[1]);
+        }
+        if (bytes_read == 0) /* EOF */
+            break;
 
-	    ssize_t total_written = 0;
-	    while (total_written < bytes_read)
-	    {
-		    ssize_t bytes_written = write(fd_to, buffer + total_written,
-				    bytes_read - total_written);
-		    if (bytes_written == -1)
-		    {
-			    close(fd_from);
-			    close(fd_to);
-			    error_exit_str(99, "Error: Can't write to %s\n", argv[2]);
-		    }
-		    total_written += bytes_written;
-	    }
-    }
-
-    if (bytes_read == -1)
-    {
-        close(fd_from);
-        close(fd_to);
-        error_exit_str(98, "Error: Can't read from file %s\n", argv[1]);
+        total_written = 0;
+        while (total_written < bytes_read)
+        {
+            bytes_written = write(fd_to, buffer + total_written,
+                                  bytes_read - total_written);
+            if (bytes_written == -1)
+            {
+                close(fd_from);
+                close(fd_to);
+                error_exit_str(99, "Error: Can't write to %s\n", argv[2]);
+            }
+            total_written += bytes_written;
+        }
     }
 
     if (close(fd_from) == -1)
@@ -97,5 +90,6 @@ int main(int argc, char *argv[])
     if (close(fd_to) == -1)
         error_exit_fd(100, "Error: Can't close fd %d\n", fd_to);
 
-    return 0;
+    return (0);
 }
+
